@@ -13,6 +13,8 @@ You can:
 - Restore grid from file
 - Populate with some samples
 
+![Screen Shot](https://raw.githubusercontent.com/aalteirac/widget-tableau-portal/master/widget.png)
+
 ## Installation
 
 ### Option 1
@@ -28,7 +30,4 @@ In the project folder, run the following:
 
 Run it with:
 - node server.js
-
-The server port is 3000
-
 
