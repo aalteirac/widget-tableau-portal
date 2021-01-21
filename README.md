@@ -30,4 +30,5 @@ In the project folder, run the following:
 
 Run it with:
 - node server.js
-The server is running on port 3000, locally go to [http://localhost:3000](http://localhost:3000)
+
+The server is running on port 3000, so locally go to [http://localhost:3000](http://localhost:3000)
