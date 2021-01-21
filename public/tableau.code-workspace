@@ -1,0 +1,46 @@
+{
+	"folders": [
+		{
+			"path": "../../demoportal"
+		},
+		{
+			"path": "../../testplace"
+		},
+		{
+			"path": "../../mgi"
+		},
+		{
+			"path": "../../tableau_rest"
+		},
+		{
+			"path": "../../quip-tableau"
+		},
+		{
+			"path": "../../authByCookie"
+		},
+		{
+			"path": "../../asys"
+		},
+		{
+			"path": "../../siaci"
+		},
+		{
+			"path": "../../webchat"
+		},
+		{
+			"path": "../../iad"
+		},
+		{
+			"path": "../../trusted_backend"
+		},
+		{
+			"path": "../../filterSync"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "testplace"
+	}
+}

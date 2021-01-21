@@ -1,0 +1,108 @@
+.menu ul {
+  display: block;
+  /* margin: 50px auto 0; */
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  position: relative;
+}
+
+.menu li.first:before {
+  content: "\f141";
+  color:white;
+}
+.menu li.first {
+  z-index: 100;
+  background-color: #4d5ee0;
+}
+.menu li {
+  display: block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  background-color: #d2d1d1;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* transition: transform 0.12s ease-out, opacity 0.12s ease-out, color 0.12s ease-out; */
+  cursor: pointer;
+  text-align: center;
+  color:#6c6d6d;
+  transition: all 0.5s;
+}
+
+.menu ul:hover li.addFeat::before{
+  content: "\f0fe";
+}
+
+.menu ul:hover li.askFeat::before{
+  content: "\f4ad";
+}
+.menu ul:hover li.editFeat::before {
+  content: "\f044";
+}
+.menu ul:hover li.settingsFeat::before {
+  content: "\f085";
+}
+.menu ul:hover {
+  height: 340px;
+  width: 130px;
+}
+.menu ul:hover li:not(:first-child):hover {
+  background-color: #4d5ee0;
+}
+.menu ul:hover li.disable:not(:first-child):hover {
+  background-color: #adabab;
+  cursor: not-allowed;
+}
+.menu ul:hover li.disable:not(:first-child):hover::before {
+  color: #6c6d6d;
+}
+.menu ul:hover li:not(:first-child):hover::before {
+  color: white;
+}
+.menu ul:hover li:nth-child(1) {
+  z-index: 1000;
+}
+.menu ul:hover li.editFeat {
+  transform: translate(40%, 10%);
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  font-size: 2em;
+  display: block;
+  transition: height 0.5s,width 0.5s,line-height 0.5s,font-size 0.5s,background-color 0.9s,color 0.9s,transform O.2s;
+  transition-delay: 0.15s;
+}
+.menu ul:hover li.askFeat {
+  transform: translate(80%, 110%); 
+  color: #6c6d6d;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  font-size: 2em;
+  display: block;
+  transition: height 0.5s,width 0.5s,line-height 0.5s,font-size 0.5s,background-color 0.9s,color 0.9s,transform 0.4s;
+  transition-delay: 0.1s;
+}
+.menu ul:hover li.addFeat {
+  transform: translate(80%, 217%);
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  font-size: 2em;
+  display: block;
+  transition: height 0.5s,width 0.5s,line-height 0.5s,font-size 0.5s,background-color 0.9s,color 0.9s,transform O.6s;
+  transition-delay: 0.15s;
+}
+.menu ul:hover li.settingsFeat{
+  transform: translate(10%, 295%);
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  font-size: 2em;
+  display: block;
+  transition: height 0.5s,width 0.5s,line-height 0.5s,font-size 0.5s,background-color 0.9s,color 0.9s,transform 0.8s;
+  transition-delay: 0.15s;
+}
