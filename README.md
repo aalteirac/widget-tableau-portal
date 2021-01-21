@@ -15,6 +15,10 @@ You can:
 
 ![Screen Shot](https://raw.githubusercontent.com/aalteirac/widget-tableau-portal/master/widget.png)
 
+## Live Instance
+
+You can play with it here: [https://tableau-widget.alteirac.com](https://tableau-widget.alteirac.com)
+
 ## Installation
 
 ### Option 1
@@ -31,4 +35,4 @@ In the project folder, run the following:
 Run it with:
 - node server.js
 
-The server is running on port 3000, so locally go to [http://localhost:3000](http://localhost:3000)
+The server is running on port 3000, locally go to [http://localhost:3000](http://localhost:3000)
