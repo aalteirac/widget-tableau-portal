@@ -29,4 +29,6 @@ In the project folder, run the following:
 Run it with:
 - node server.js
 
+The server port is 3000
+
 
