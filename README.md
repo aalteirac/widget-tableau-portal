@@ -4,13 +4,13 @@
 A little sample showing a page to embed and organise Tableau Sheets and/or Dashboards in a widget grid.
 
 You can:
-- Add widget by pasting the embed code from Tableau Online, Tableau Public or Tableau Server
+- Add Viz in new Widget by pasting the embed code from Tableau Online, Tableau Public or Tableau Server
 - Move and resize Widget (better to use "automatic" layout in Dashboard)
 - Synchronise Filters across Widgets when selecting on Charts
 - Use Ask Data
 - Use Web Edit
-- Export the grid in a file
-- Restore grid from file
+- Export the grid content in a file
+- Restore grid content from file
 - Populate with some samples
 
 ![Screen Shot](https://raw.githubusercontent.com/aalteirac/widget-tableau-portal/master/widget.png)
