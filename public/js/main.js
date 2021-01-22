@@ -9,7 +9,7 @@
   var MASK_DELAY=2000;
   const MASK_DELAY_INIT=2000;
   const VERSION="1.3";
-  const DEFAULT_SAMPLE = "sample";
+  const DEFAULT_SAMPLE = "manufacturing";
   var mustScrollTop=false;
   var doit;
 
