@@ -111,6 +111,7 @@
       var target = e.target || e.srcElement;
       widToDel=$(target).parents(".gs-w");
     }
+    $('#predefined').val("")
     if(localStorage.getItem("SAMPLE_NEW")!=null)
       $("#shareCode").val(localStorage.getItem("SAMPLE_NEW"));
     MicroModal.show(id,{onClose:()=>{$(".btnMenu").show()}});
@@ -181,7 +182,7 @@
       widget_base_dimensions: ['auto', 30],
       widget_margins: [5, 5],
       avoid_overlapped_widgets:true,
-      max_cols:mobileCheck()==true?30:60,
+      max_cols:mobileCheck()==true?60:60,
       max_rows:200,
       shift_widgets_up: true,
       shift_larger_widgets_down: true,
@@ -209,6 +210,7 @@
               storeGrid();
               deHighLight();
               packGrid();
+              gridResize();
               resizeViz(getTabVizFromWidget($widget));
           }
       },
@@ -223,6 +225,7 @@
             storeGrid();
             deHighLight();
             packGrid();
+            gridResize();
             resizeViz(getTabVizFromWidget(ui.$helper))
           }
       }
@@ -236,6 +239,7 @@
     initModal();
     editMode(true);
     mobilizeMe();
+    loadPredefined("predefined");
     setTimeout(() => {
       gridResize();
     }, 1000);
@@ -301,6 +305,30 @@
     editMode(true);
     storeGrid();
   }
+  function addWidgetToGrid(chartID){
+    curNew=getUniqueID();
+    gridster.add_widget.apply(gridster, [`<li id="${curNew}" style="margin-top: auto; margin-bottom: auto; min-height: auto;">NEW</li>`, 30, 16,1,1,null,false]);
+    var nid=getUniqueID()
+    var tp=getNodeTemplate(nid,chartID)
+    $(`#${curNew}`).empty();
+    $(`#${curNew}`).html(tp);
+    setTimeout(() => {
+      gridResize();
+      setTimeout(() => {
+        loadVizInit(chartID,nid);
+      }, 1000);
+    }, 1000);
+    editMode(true);
+    packGrid();
+    storeGrid();
+  }
+  function addWidgetFromList(){
+    var nw=$('#predefined').val();
+    if(nw!=null){
+      addWidgetToGrid(nw);
+      MicroModal.close('modal-1');
+    }
+  }
   function addWidget(){
     var text=$("#shareCode").val();
     var dom = $.parseHTML( text );
@@ -315,21 +343,7 @@
       chartID=decodeURIComponent(`${host}/${path}`)
     var staticIMG=$dom.find( "param[name='static_image']" ).attr('value') ;
     MicroModal.close('modal-1');
-    curNew=getUniqueID();
-    gridster.add_widget.apply(gridster, [`<li id="${curNew}" style="margin-top: auto; margin-bottom: auto; min-height: auto;">NEW</li>`, 30, 16,1,1,null,false]);
-    var nid=getUniqueID()
-    var tp=getNodeTemplate(nid,chartID,staticIMG)
-    $(`#${curNew}`).empty();
-    $(`#${curNew}`).html(tp);
-    setTimeout(() => {
-      loadVizInit(chartID,nid);
-      setTimeout(() => {
-        gridResize();
-      }, 1000);
-    }, 1000);
-    editMode(true);
-    packGrid();
-    storeGrid();
+    addWidgetToGrid(chartID);
   }
   function removeWidget(){
     var vizzes=tableau.VizManager.getVizs();
@@ -343,6 +357,7 @@
     gridster.remove_widget(widToDel,()=>{
       storeGrid();
       MicroModal.close('modal-2');
+      packGrid();
       setTimeout(() => {
         gridResize();
       }, 1000);
@@ -353,8 +368,10 @@
     var edt=localStorage.getItem("EDIT_URL");
     var ask=localStorage.getItem("ASK_URL");
     var snew=localStorage.getItem("SAMPLE_NEW");
+    var sync=localStorage.getItem("SYNC_FILTERS");
     localStorage.clear();
     localStorage.setItem("VERSION",VERSION);
+    localStorage.setItem("SYNC_FILTERS",sync);
     if(ask!="" && ask!=null)
       localStorage.setItem("ASK_URL",ask);
     if(edt!="" && edt!=null)  
@@ -494,11 +511,10 @@
       workbook = vizzes[b].getWorkbook();
       activeSheet = workbook.getActiveSheet();
       if(activeSheet.getSheetType()==tableau.SheetType.DASHBOARD )
-        activeSheet.getWorksheets().forEach(element => {
-          element.clearSelectedMarksAsync();
-        }); 
-      else
+        activeSheet.getWorksheets()[0].clearSelectedMarksAsync(); 
+      else{
         activeSheet.clearSelectedMarksAsync();
+      }
       for(var i in curFilters){
         all.push(activeSheet.applyFilterAsync(i,"",tableau.FilterUpdateType.ALL));
       }
@@ -705,6 +721,22 @@
     d.getFullYear() + "--" + ("0" + d.getHours()).slice(-2) + "h" + ("0" + d.getMinutes()).slice(-2);
     saveAs(blob, "myConfig_"+datestring+".tabw");
   }
+  function loadPredefined(url){
+    return new Promise((resolve,reject)=>{
+      fetch(url+'.tabw')
+      .then((response) => {
+        return response.json();
+      }).then((data) => {
+        for (var name in data) {
+            $('#predefined').append($('<option>', {
+              value: data[name],
+              text: name
+          }));  
+        }
+        resolve();
+      });
+    })
+  }
   function restoreFromUrl(url,reload=true){
     return new Promise((resolve,reject)=>{
       fetch(url+'.tabw')
@@ -754,6 +786,7 @@
     }, 4500);
   }
   window.tabportal={};
+  window.tabportal.addWidgetFromList=addWidgetFromList;
   window.tabportal.DEFAULT_SAMPLE=DEFAULT_SAMPLE;
   window.tabportal.restoreFromUrl=restoreFromUrl;
   window.tabportal.askLoaded=askLoaded;

@@ -248,9 +248,8 @@ div.gridster .gs-w.notrans:not(.preview-holder), div.gridster .resize-preview-ho
   line-height: 105px;
   background-color:#efefef;
   color:darkgray;
-  width:100%;
+  width:98%;
   height: 105px;
-  margin-top: 20px;
 }
 .label_settings{
   width: 30%;
@@ -273,9 +272,6 @@ div.gridster .gs-w.notrans:not(.preview-holder), div.gridster .resize-preview-ho
 .text_drop{
   margin-top: -30px;
   cursor: pointer;
-}
-#shareCode{
-  width: 100%;
 }
 .link_sample{
   width: 100%;

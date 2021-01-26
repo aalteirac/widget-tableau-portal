@@ -2,20 +2,20 @@
 <html>
 <head>
     <title>Tableau Widget</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="css/switch.css?tm=44">
-    <link rel="stylesheet" type="text/css" href="css/all.min.css?tm=44">
-    <link rel="stylesheet" type="text/css" href="css/loader.css?tm=44">
-    <link rel="stylesheet" type="text/css" href="css/grid.css?tm=44">
-    <link rel="stylesheet" type="text/css" href="css/menu.css?tm=44">
-    <link rel="stylesheet" type="text/css" href="css/modal.css?tm=44">
-    <link rel="stylesheet" type="text/css" href="dist/jquery.gridster.min.css?tm=44">
-    <script type="text/javascript" src="dist/tableau-2.7.0.min.js?tm=44"></script>
-    <script type="text/javascript" src="dist/jquery.min.js?tm=44"></script>
-    <script type="text/javascript" src="dist/jquery.gridster.js?tm=44" charset="utf-8"></script>
-    <script type="text/javascript" src="dist/micromodal.min.js?tm=44"></script>
-    <script type="text/javascript" src="dist/fileSaver.js?tm=44"></script>
-    <script type="text/javascript" src="js/main.js?tm=44"charset="utf-8"></script>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' >
+    <link rel="stylesheet" type="text/css" href="css/switch.css?tm=46">
+    <link rel="stylesheet" type="text/css" href="css/all.min.css?tm=46">
+    <link rel="stylesheet" type="text/css" href="css/loader.css?tm=46">
+    <link rel="stylesheet" type="text/css" href="css/grid.css?tm=46">
+    <link rel="stylesheet" type="text/css" href="css/menu.css?tm=46">
+    <link rel="stylesheet" type="text/css" href="css/modal.css?tm=46">
+    <link rel="stylesheet" type="text/css" href="dist/jquery.gridster.min.css?tm=46">
+    <script type="text/javascript" src="dist/tableau-2.7.0.min.js?tm=46"></script>
+    <script type="text/javascript" src="dist/jquery.min.js?tm=46"></script>
+    <script type="text/javascript" src="dist/jquery.gridster.js?tm=46" charset="utf-8"></script>
+    <script type="text/javascript" src="dist/micromodal.min.js?tm=46"></script>
+    <script type="text/javascript" src="dist/fileSaver.js?tm=46"></script>
+    <script type="text/javascript" src="js/main.js?tm=46"charset="utf-8"></script>
 </head>
 
 <body onload="tabportal.gridize()">
@@ -28,7 +28,7 @@
           </h2>
           <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
         </header>
-        <main class="modal__content" id="modal-1-content" style="display: flex;flex-wrap: wrap;">
+        <main class="modal__content" id="modal-3-content" style="display: flex;flex-wrap: wrap;">
           <div class="settings_block">
             <label for="ask" class="label_settings">Ask Data URL: </label>
             <input  id="ask" class="input input_settings" required="">
@@ -44,18 +44,21 @@
               <span class="slider round"></span>
             </label>
           </div>
-          <div class="panel_border">
-            <label class="label_settings">Restore Widgets</label>
-            <div class="file_drop">
-              <div id="drop_zone" class="box__input">
-                <input type="file" id="file" class="box__file">
-                <label class="text_drop" for="file"><li onclick="tabportal.showSettings()" style="width: 35px;" class="fas fa-upload"></li><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
-                </div>
+          <details>
+            <summary>Save/Restore Widgets</summary>
+            <div class="panel_border">
+              <label class="label_settings"></label>
+              <div class="file_drop">
+                <div id="drop_zone" class="box__input">
+                  <input type="file" id="file" class="box__file">
+                  <label class="text_drop" for="file"><li onclick="tabportal.showSettings()" style="width: 35px;" class="fas fa-upload"></li><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
+                  </div>
+              </div>
+              <button class="exportBtn modal__btn modal__btn-primary" onclick="tabportal.saveToFile()">Export Current Settings...</button>
+              <button class="exportBtn modal__btn modal__btn-primary" onclick="tabportal.restoreFromUrl('manufacturing')">Manufacturing Samples...</button>
+              <button class="exportBtn modal__btn modal__btn-primary" onclick="tabportal.restoreFromUrl(tabportal.DEFAULT_SAMPLE)">Default Samples...</button>
             </div>
-            <button class="exportBtn modal__btn modal__btn-primary" onclick="tabportal.saveToFile()">Export Current Settings...</button>
-            <button class="exportBtn modal__btn modal__btn-primary" onclick="tabportal.restoreFromUrl('manufacturing')">Manufacturing Samples...</button>
-            <button class="exportBtn modal__btn modal__btn-primary" onclick="tabportal.restoreFromUrl(tabportal.DEFAULT_SAMPLE)">Default Samples...</button>
-          </div>
+          </details>
         </main>
         <footer class="modal__footer">
           <button class="modal__btn modal__btn-primary" onclick="tabportal.saveSettings()"> Save </button>
@@ -80,7 +83,7 @@
     </div>
   </div>
 
-  <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+  <div class="modal nw micromodal-slide" id="modal-1" aria-hidden="true">
       <div class="modal__overlay" tabindex="-1" data-micromodal-close>
         <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
           <header class="modal__header">
@@ -89,16 +92,29 @@
             </h2>
             <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
           </header>
-          <main class="modal__content" id="modal-1-content">
-              <p>
-                  Copy the share code from Tableau Online or Server and paste it here
-              </p>
-              <textarea id="shareCode" name="" rows="14" cols="50" placeholder="Paste here..."></textarea>
-          </main>
-          <footer class="modal__footer">
-            <button class="gogo modal__btn modal__btn-primary" onclick="tabportal.addWidget()">Insert Shared</button>
-            <button class="modal__btn" data-micromodal-close aria-label="Close">Cancel</button>
-          </footer>
+          <details open>
+            <summary>Choose in the predefined list</summary>
+            <select name="wid" id="predefined">
+              <option value="" disabled selected>Select your Widget (if any)</option>
+            </select>
+            <footer class="modal__footer">
+              <button class="modal__btn modal__btn-primary" onclick="tabportal.addWidgetFromList()">Insert Widget</button>
+              <button class="gogo modal__btn" data-micromodal-close aria-label="Close">Cancel</button>
+            </footer>
+          </details>  
+          <details>
+            <summary>Use Embedded Code From Tableau Server/Online/Public</summary>
+            <main class="modal__content" id="modal-1-content">
+                <p>
+                    Copy the share code from Tableau and paste it here:
+                </p>
+                <textarea id="shareCode" name="" rows="14" cols="40" placeholder="Paste here..."></textarea>
+            </main>
+            <footer class="modal__footer">
+              <button class="modal__btn modal__btn-primary" onclick="tabportal.addWidget()">Insert Widget</button>
+              <button class="modal__btn gogo" data-micromodal-close aria-label="Close">Cancel</button>
+            </footer>
+          </details>  
         </div>
       </div>
   </div>
@@ -112,7 +128,7 @@
           </h2>
           <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
         </header>
-        <main class="modal__content" id="modal-1-content">
+        <main class="modal__content" id="modal-2-content">
             <p>
                 Are you sure you want to delete this Widget ?
             </p>
