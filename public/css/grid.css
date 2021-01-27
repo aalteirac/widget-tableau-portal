@@ -353,3 +353,9 @@ summary{
   margin-bottom: 12px;
   margin-top: 10px;
 }
+.thumb_btn.spin {
+  transition: all 0.75s 0.25s!important;
+  -webkit-transition: all 0.75s 0.25s!important;
+  transform: translate(-50%, -50%) scale(0,0) rotate(360deg);
+  -webkit-transform: translate(-50%, -50%) rotate(180deg) scale(0,0) ;
+}

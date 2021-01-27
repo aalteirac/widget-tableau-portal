@@ -305,7 +305,7 @@
   }
   function addWidgetToGrid(chartID){
     curNew=getUniqueID();
-    gridster.add_widget.apply(gridster, [`<li id="${curNew}" style="margin-top: auto; margin-bottom: auto; min-height: auto;">NEW</li>`, 30, 16,1,1,null,false]);
+    gridster.add_widget.apply(gridster, [`<li id="${curNew}" style="margin-top: auto; margin-bottom: auto; min-height: auto;">NEW</li>`, mobileCheck()==true?60:30, 16,1,1,null,false]);
     var nid=getUniqueID()
     var tp=getNodeTemplate(nid,chartID)
     $(`#${curNew}`).empty();
@@ -322,13 +322,11 @@
   }
   function addWidgetFromList(url=null){
     if(url!=null){
-      addWidgetToGrid(url);
-      return;
-    }
-    var nw=$('#predefined').val();
-    if(nw!=null){
-      addWidgetToGrid(nw);
-      MicroModal.close('modal-1');
+      $(".thumb_btn").addClass("spin");
+      setTimeout(() => {
+        $(".thumb_btn").removeClass("spin");
+         addWidgetToGrid(url);
+      }, 1000);
     }
   }
   function addWidget(){
