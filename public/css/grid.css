@@ -190,8 +190,8 @@ table {
 .gridster .preview-holder {
   border: none !important;
   border-radius: 5px !important;
-  background: #4d5ee0!important;
-  opacity: 0.4 !important;
+  background: #0019d8!important;
+  opacity: 0.7 !important;
 }
 .gridster {
   z-index: 0;
@@ -275,5 +275,81 @@ div.gridster .gs-w.notrans:not(.preview-holder), div.gridster .resize-preview-ho
 }
 .link_sample{
   width: 100%;
+  margin-top: 10px;
+}
+#predefined{
+  max-height: 340px;
+  min-height: 340px;
+  overflow: auto;
+  margin-bottom: 10px;
+}
+.thumbn {
+  float: left;
+  height:150px;
+  width:200px;
+  margin-left: 15px;
+  margin-top: 15px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 9px 9px 5px -8px #0000009c;
+}
+.thumb_pic{
+  height: calc(100% - 25px);
+  width: 100%;
+}
+.thumb_text{
+  transition: .5s ease;
+  transition-delay: 0.6s;
+  opacity: 1;
+  height:25px;
+}
+.thumbn:hover img,.thumbn:hover .thumb_text{
+  transition: .5s ease;
+  transition-delay: 0.6s;
+  opacity: 0.5;
+}
+.thumbn img{
+  transition: .5s ease;
+  transition-delay: 0.6s;
+  opacity: 1;
+}
+.thumbn:hover .thumb_btn{
+  transition: .5s ease;
+  transition-delay: 0.6s;
+  opacity: 1;
+}
+.thumb_btn {
+  transition: .5s ease;
+  transition-delay: 0.3s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+.thumb_btn_txt {
+  background-color: #4d5ee0;
+  border-radius: 0.25rem;
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+summary{
+  cursor: pointer;
+}
+#search:focus{
+  outline-width: 0px;
+}
+#search {
+  background-image: url(/css/searchicon.png);
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 200px;
+  font-size: 16px;
+  padding: 12px 0px 3px 40px;
+  border: 0px solid #ddd;
+  margin-bottom: 12px;
   margin-top: 10px;
 }

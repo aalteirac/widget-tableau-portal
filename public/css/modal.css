@@ -113,10 +113,9 @@
 #modal-1 .modal__close {
   margin-right: -16px;
 }
-.modal__btn:focus, .modal__btn:hover {
-  -webkit-transform: scale(1.05);
-  transform: scale(1.05);
-}
+/* .modal__btn:focus, .modal__btn:hover {
+
+} */
 .modal select{
   width: 100%;
   color: #707782;
@@ -128,7 +127,7 @@ summary:focus{
   outline-width: 0px;
 }
 .modal__btn-primary {
-  background-color: #00449e;
+  background-color: #4d5ee0;
   color: #fff;
 }
 main#modal-1-content {

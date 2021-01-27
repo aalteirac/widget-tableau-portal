@@ -1,3 +1,15 @@
-﻿{"Operational Energy":"https://public.tableau.com/views/EnergyAwareness-IntelligencepoweredbyWonderware/OperationalEnergy",
-"Energy Per Work Order":"https://public.tableau.com/shared/YBQGNTC5H",
-"Energy per Site":"https://public.tableau.com/shared/626GMH5BP"}
+﻿{
+"Consumption per Product":"https://public.tableau.com/views/Wonderware/ConsbyProduct",
+"Intensity HeatMap":"https://public.tableau.com/views/Wonderware/InstensityHeatmap",
+"Intensity per Month":"https://public.tableau.com/views/Wonderware/IntensitybyMonthtrend",
+"Intensity Map":"https://public.tableau.com/views/Wonderware/IntensityMap",
+"Consumption by Operation":"https://public.tableau.com/views/Wonderware/ConsbyOp",
+"Consumption per WO":"https://public.tableau.com/views/Wonderware/ConsbyWO",
+"Operation Gantt":"https://public.tableau.com/views/Wonderware/OperationGantt",
+"Consumption by Shift":"https://public.tableau.com/views/Wonderware/ConsbyShift",
+"Consumption by Utility":"https://public.tableau.com/views/Wonderware/ConsbyUtiliyTarget",
+"Work Order Gantt":"https://public.tableau.com/views/Wonderware/WorkOrderGantt",
+"Operational Energy":"https://public.tableau.com/views/EnergyAwareness-IntelligencepoweredbyWonderware/OperationalEnergy",
+"Energy Per Work Order":"https://public.tableau.com/views/Wonderware/ProductionEnergy",
+"Energy per Site":"https://public.tableau.com/views/Wonderware/GlobalEnergy"
+}

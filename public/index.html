@@ -84,7 +84,7 @@
   </div>
 
   <div class="modal nw micromodal-slide" id="modal-1" aria-hidden="true">
-      <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+      <div class="modal__overlay" tabindex="-1">
         <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
           <header class="modal__header">
             <h2 class="modal__title" id="modal-1-title">
@@ -93,14 +93,12 @@
             <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
           </header>
           <details open>
-            <summary>Choose in the predefined list</summary>
-            <select name="wid" id="predefined">
-              <option value="" disabled selected>Select your Widget (if any)</option>
-            </select>
-            <footer class="modal__footer">
-              <button class="modal__btn modal__btn-primary" onclick="tabportal.addWidgetFromList()">Insert Widget</button>
-              <button class="gogo modal__btn" data-micromodal-close aria-label="Close">Cancel</button>
-            </footer>
+            <summary>
+              Widget List
+            </summary>
+            <input type="text" id="search" onkeyup="tabportal.filterWidgetList()" placeholder="Search for Widgets...">
+            <div name="wid" id="predefined">
+            </div>
           </details>  
           <details>
             <summary>Use Embedded Code From Tableau Server/Online/Public</summary>
@@ -112,9 +110,11 @@
             </main>
             <footer class="modal__footer">
               <button class="modal__btn modal__btn-primary" onclick="tabportal.addWidget()">Insert Widget</button>
-              <button class="modal__btn gogo" data-micromodal-close aria-label="Close">Cancel</button>
             </footer>
           </details>  
+          <footer class="modal__footer">
+            <button class="modal__btn modal__btn-primary gogo" data-micromodal-close aria-label="Close">Close</button>
+          </footer>
         </div>
       </div>
   </div>

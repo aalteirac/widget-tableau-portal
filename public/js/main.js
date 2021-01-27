@@ -230,6 +230,7 @@
           }
       }
   }).data('gridster');
+    gridResize();
     specialWidget("ask");
     closeWidget("ask",true);
     specialWidget("edit");
@@ -240,9 +241,6 @@
     editMode(true);
     mobilizeMe();
     loadPredefined("predefined");
-    setTimeout(() => {
-      gridResize();
-    }, 1000);
   }
   function expandWidget(e){
     e = e || window.event;
@@ -322,7 +320,11 @@
     packGrid();
     storeGrid();
   }
-  function addWidgetFromList(){
+  function addWidgetFromList(url=null){
+    if(url!=null){
+      addWidgetToGrid(url);
+      return;
+    }
     var nw=$('#predefined').val();
     if(nw!=null){
       addWidgetToGrid(nw);
@@ -722,17 +724,26 @@
     saveAs(blob, "myConfig_"+datestring+".tabw");
   }
   function loadPredefined(url){
+    var tbTemplate=`<div class="thumbn" style="height:100px;width:100px"> </div>`
     return new Promise((resolve,reject)=>{
       fetch(url+'.tabw')
       .then((response) => {
         return response.json();
       }).then((data) => {
         for (var name in data) {
-            $('#predefined').append($('<option>', {
-              value: data[name],
-              text: name
-          }));  
+          $("#predefined").append(
+            `<div class="thumbn"> 
+                <div class="thumb_text">${name}</div>
+                <img class="thumb_pic" src="${data[name]}?:embed=y&:showVizHome=no&:format=png&:embed=y" />
+                <div class="thumb_btn thumb_btn_txt" onclick="tabportal.addWidgetFromList('${data[name]}')">
+                  Insert
+                </div>
+            </div>`
+          );
         }
+        $('details').click(function (event) {
+          $('details').not(this).removeAttr("open");  
+        });
         resolve();
       });
     })
@@ -785,9 +796,21 @@
       window.location.reload();
     }, 4500);
   }
+  function filterWidgetList(){
+    var fil=$("#search").val().toUpperCase();
+    $(".thumbn").each((i,el)=>{
+      if($(el).find(".thumb_text").text().toUpperCase().indexOf(fil)!=-1){
+        $(el).show();
+      }
+      else{
+        $(el).hide();
+      }  
+    })
+  }
   window.tabportal={};
-  window.tabportal.addWidgetFromList=addWidgetFromList;
   window.tabportal.DEFAULT_SAMPLE=DEFAULT_SAMPLE;
+  window.tabportal.addWidgetFromList=addWidgetFromList;
+  window.tabportal.filterWidgetList=filterWidgetList;
   window.tabportal.restoreFromUrl=restoreFromUrl;
   window.tabportal.askLoaded=askLoaded;
   window.tabportal.saveToFile=saveToFile;
