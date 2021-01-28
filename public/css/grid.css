@@ -278,10 +278,13 @@ div.gridster .gs-w.notrans:not(.preview-holder), div.gridster .resize-preview-ho
   margin-top: 10px;
 }
 #predefined{
-  max-height: 340px;
-  min-height: 340px;
+  max-height: 325px;
+  min-height: 325px;
   overflow: auto;
   margin-bottom: 10px;
+  scroll-snap-type: mandatory;
+  scroll-snap-points-y: repeat(300px);
+  scroll-snap-type: y mandatory;
 }
 .thumbn {
   float: left;
@@ -292,6 +295,7 @@ div.gridster .gs-w.notrans:not(.preview-holder), div.gridster .resize-preview-ho
   position: relative;
   cursor: pointer;
   box-shadow: 9px 9px 5px -8px #0000009c;
+  scroll-snap-align: start;
 }
 .thumb_pic{
   height: calc(100% - 25px);
