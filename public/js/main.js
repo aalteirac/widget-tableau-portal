@@ -445,9 +445,11 @@
   function getNodeTemplate(genID,chartName){
     var tp=`
         <div class="drag_handle hide">
-          <div class="close-widget" onclick="tabportal.showModal('modal-2',event)"><i class="ico-handle fa fa-times"></i></div>
-          <div class="reset-widget" onclick="tabportal.resetFilters()"><i class="ico-handle fa fa-sync"></i></div>
-          <div class="expand-widget" onclick="tabportal.expandWidget(event)"><i class="ico-handle fa fa-expand-alt"></i></div>
+          <div class="widget-btn">
+            <div class="close-widget" onclick="tabportal.showModal('modal-2',event)"><i class="ico-handle fa fa-times"></i></div>
+            <div class="reset-widget" onclick="tabportal.resetFilters()"><i class="ico-handle fa fa-sync"></i></div>
+            <div class="expand-widget" onclick="tabportal.expandWidget(event)"><i class="ico-handle fa fa-expand-alt"></i></div>
+          </div>  
         </div>
         <div class="tab-widget">
           <div class='tableauPlaceholder' chart="${chartName}" id='${genID}' style='width: 100%; height: 100%'>

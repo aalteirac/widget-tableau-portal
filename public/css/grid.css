@@ -150,11 +150,30 @@ h1{
 .drag_handle.hide{
   display: none;
 }
-.drag_handle:hover{
-  opacity: 1;
-  
+.maximized .widget-btn{
+  width: 80px;
 }
-.drag_handle div:hover, .close-data:hover{
+.widget-btn{
+  opacity: 0;
+  position: absolute;
+  height: 40px;
+  width: 120px;
+  border-radius: 20px;
+  right: 5px;
+  background-color: #e9eced;
+  top: 5px;
+  transition: all 0.4s;
+  visibility: hidden;
+}
+.drag_handle:hover .widget-btn{
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.4s;
+}
+.drag_handle:hover{
+  opacity: 1; 
+}
+.expand-widget:hover,.reset-widget:hover, .close-widget:hover, .close-data{
   background-color: #4d5ee0;
   color: white;
   transition: all 0.4s;
