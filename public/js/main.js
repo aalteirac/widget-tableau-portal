@@ -303,9 +303,14 @@
     editMode(true);
     storeGrid();
   }
+  function getFirstWidgetSize(){
+    if(gridster.$widgets.length>0)
+      return {"x":gridster.$widgets[0].dataset.sizex,"y":gridster.$widgets[0].dataset.sizey}
+    return {"x":mobileCheck()==true?60:30,"y":16}  
+  }
   function addWidgetToGrid(chartID){
     curNew=getUniqueID();
-    gridster.add_widget.apply(gridster, [`<li id="${curNew}" style="margin-top: auto; margin-bottom: auto; min-height: auto;">NEW</li>`, mobileCheck()==true?60:30, 16,1,1,null,false]);
+    gridster.add_widget.apply(gridster, [`<li id="${curNew}" style="margin-top: auto; margin-bottom: auto; min-height: auto;">NEW</li>`, getFirstWidgetSize().x, getFirstWidgetSize().y,1,1,null,false]);
     var nid=getUniqueID()
     var tp=getNodeTemplate(nid,chartID)
     $(`#${curNew}`).empty();
